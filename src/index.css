@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  /* background: #f8f9fe; */
+  background: #f5f7fa;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.heigth_data {
+  height: 395px;
+  overflow-x: auto;
+  overflow: hidden;
+  /* width: 500px; */
+}
+
+.label_file {
+  background: #eff1ff;
+}
+
+.width {
+  width: 99%;
+  margin: 10px auto;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.margin {
+  margin: 10px auto;
+}
+
+.chat {
+  width: 45%;
+  margin: 5px;
+  max-height: 84vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  /* outline: 1px solid blue; */
+  padding: 10px;
+}
+
+.chat::-webkit-scrollbar {
+  width: 10px;
+}
+
+.heigth {
+  height: 80vh;
+}
+
+.graf > g:first-child {
+  margin: 0 auto;
+}
+
+.mensaje {
+  max-width: 60%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  /* background-color: #007bff; */
+  color: #000000;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.5s, transform 0.5s;
+  box-shadow: 1px 1px 5px 1px rgba(168, 166, 166, 0.3);
+}
+
+.mensaje.visible {
+  opacity: 1;
+  transform: translateX(10px);
+}
+/* span{
+  font-weight: bold;
+  color: rgb(106, 105, 105);
+} */
+
+.subir {
+  z-index: 1000;
+  border-radius: 10px;
+  /* background:  #003366 ; */
+  font-size: 13px;
+  /* text-shadow: 0px 0px 2px white; */
+}
+
+.icon {
+  z-index: 1005;
+  color: red;
+}
+
+.width_line {
+  width: 70%;
+  height: 2px;
+  margin: 5px auto;
+  /* box-shadow: 0px 0px 2px 0px white; */
+}
+
+.shadow-efect:hover {
+  box-shadow: 0px 0px 10px 2px white;
+}
+
+.shadow-efect_filter:hover {
+  filter: drop-shadow(1px 1px 15px white);
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    scale: 25%;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+  }
+}
+
+.efect {
+  view-timeline-name: --image;
+  view-timeline-axis: block;
+  animation-timeline: --imagen;
+  animation-name: show;
+  animation-range: entry 25% cover 50%;
+  animation-fill-mode: both;
+}
+
+@media (max-width: 768px) {
+  .chat {
+    width: 95%;
+  }
+  .chat {
+    max-height: 48vh;
+  }
+
+  .heigth {
+    height: 35vh;
+  }
+
+  .mensaje {
+    max-width: 90%;
+  }
+}
