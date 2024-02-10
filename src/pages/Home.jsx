@@ -16,7 +16,7 @@ import WordCloud from "../components/WordCloud";
 import GraficaLineBar from "../components/GraficaLineBar";
 import OpcionesWeb from "../components/OpcionesWeb";
 import GraficaDatos from "../components/GraficaDatos";
-import Mensajes from "../utils/mensajes";
+import Mensajes from "../utils/Mensajes";
 // import procesarTexto from "../utils/ProcesarTexto";
 import procesarTexto, {
   separarCadena,
