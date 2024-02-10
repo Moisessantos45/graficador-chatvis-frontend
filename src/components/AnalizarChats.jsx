@@ -22,7 +22,7 @@ const AnalizarChats = ({ texto }) => {
           .join(" ");
         const textoProcesado = cadena.replace(/\n/g, " ").split(/\s*\.\.\.\s*/);
         const textoFinal = textoProcesado.join(" ").slice(0, 7000);
-        const prompt = `dime cual fue el tema principal de este texto: ${textoFinal}`;
+        const prompt = `dime cual fue el tema principal de este texto o de que se esta hablando: ${textoFinal}`;
 
         resolve(prompt);
       } catch (error) {
