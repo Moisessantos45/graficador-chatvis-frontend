@@ -51,8 +51,8 @@ const AnalizarChats = ({ texto }) => {
   }, []);
   if (loader) return <h1 className="ml-auto">Procesando...</h1>;
   return (
-    <article className="w-12/12 sm:w-1/2 sm:h-[84vh] h-auto flex-wrap bg-zinc-50 flex justify-center m-aut items-center overflow-y-auto shadow-xl shadow-gray-300 rounded-lg hover:scale-100 transition-all">
-      <div className=" w-11/12 m-2 text-justify shadow-xl bg-gray-100 shadow-zinc-50 rounded-lg transition-all overflow-hidden flex flex-wrap p-2">
+    <article className="w-12/12 sm:w-1/2 sm:h-[84vh] h-auto flex-wrap bg-zinc-50 flex justify-center m-aut items-center overflow-y-auto shadow-xl shadow-gray-300 rounded-lg hover:scale-100 transition-all p-1">
+      <div className=" w-12/12 text-justify shadow-xl bg-gray-100 shadow-zinc-50 rounded-lg transition-all overflow-hidden flex flex-wrap p-2 h-full">
         <p className=" text-black">{idea !== "" ? idea : ""}</p>
       </div>
     </article>
