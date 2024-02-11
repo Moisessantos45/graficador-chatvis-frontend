@@ -123,7 +123,7 @@ const GraficaNone = ({data}) => {
   
     return (
       <>
-        <article className="w-full h-2/3 flex">
+        <article className="w-full h-2/3 flex m-auto">
           <svg ref={svgRef}></svg>
         </article>
       </>

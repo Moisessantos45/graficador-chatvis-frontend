@@ -72,7 +72,7 @@ const GraficaBarraFecha = ({ datos }) => {
   }, []);
 
   return (
-    <article className="w-11/12 sm:w-1/2 sm:h-99 h-96 flex items-center justify-center flex-col shadow-xl rounded-lg shadow-gray-300 hover:scale-100 transition-all">
+    <article className="w-12/12 sm:w-1/2 sm:h-[84vh] h-96 flex items-center justify-center flex-col shadow-xl rounded-lg shadow-gray-300 hover:scale-100 transition-all m-auto">
       <div className="flex items-center justify-center" style={{ width: '95%', height: '576px' }}>
         <canvas ref={chartRef}></canvas>
       </div>

@@ -106,7 +106,7 @@ const WordCloud = ({ cadena }) => {
     });
 
   return (
-    <article className=" scroll w-12/12 sm:w-6/12 heigth flex-wrap flex items-center justify-center m-1 overflow-y-auto shadow-xl rounded-lg shadow-gray-300 hover:scale-100 transition-all">
+    <article className=" scroll w-12/12 sm:w-6/12 heigth flex-wrap flex items-center justify-center m-auto overflow-y-auto shadow-xl rounded-lg shadow-gray-300 hover:scale-100 transition-all">
       <svg
         ref={svgRef}
         className=" flex w-11/12 m-auto h-full justify-center items-center p-1"

@@ -10,9 +10,10 @@ body {
 }
 
 .heigth_data {
-  height: 395px;
+  height: 84vh;
   overflow-x: auto;
   overflow: hidden;
+  margin: 0px auto;
   /* width: 500px; */
 }
 
@@ -35,7 +36,6 @@ body {
 
 .chat {
   width: 45%;
-  margin: 5px;
   max-height: 84vh;
   overflow-y: auto;
   scroll-behavior: smooth;
@@ -50,7 +50,7 @@ body {
 }
 
 .heigth {
-  height: 80vh;
+  height: 84vh;
 }
 
 .graf > g:first-child {

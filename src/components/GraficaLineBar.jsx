@@ -60,7 +60,7 @@ const GraficaLineBar = ({ data }) => {
 
   return (
     <>
-    <article className="w-12/12 sm:w-1/2 h-2/3 flex flex-col">
+    <article className="w-12/12 sm:w-1/2 sm:h-[84vh] flex flex-col m-auto">
       <Bar data={chartData} options={config.options} />
     </article>
     </>

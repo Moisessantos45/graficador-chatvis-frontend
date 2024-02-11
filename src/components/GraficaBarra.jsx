@@ -165,12 +165,12 @@ const GraficaBarra = ({ datos }) => {
   }, [datos]);
 
   return (
-    <article className="w-11/12 margin sm:w-1/2 sm:h-99 h-96 flex flex-col items-center justify-center overflow-hidden shadow-xl shadow-gray-300 rounded-lg hover:scale-100 transition-all">
+    <article className="w-12/12 margin sm:w-1/2 sm:h-[84vh] h-96 flex flex-col items-center justify-center overflow-hidden shadow-xl shadow-gray-300 rounded-lg hover:scale-100 transition-all m-auto">
       <div
         className=" flex items-center"
         style={{ width: "95%", height: "100%" }}
       >
-        <canvas ref={chartRef}></canvas>
+        <canvas className="h-auto sm:h-full" ref={chartRef}></canvas>
       </div>
     </article>
   );

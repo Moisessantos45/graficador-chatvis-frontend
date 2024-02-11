@@ -120,7 +120,7 @@ ${d3.sum(
 
   return (
     <>
-      <article className="w-12/12 sm:w-1/2 h-80 sm:h-100 flex-wrap bg-zinc-50 flex justify-center m-2 sm:m-1 overflow-y-auto shadow-xl shadow-gray-300 rounded-lg hover:scale-100 transition-all scroll">
+      <article className="w-12/12 sm:w-1/2 h-80 sm:h-100 flex-wrap bg-zinc-50 flex justify-center sm:m-1 overflow-y-auto shadow-xl shadow-gray-300 rounded-lg hover:scale-100 transition-all scroll m-auto">
         <svg
           ref={svgRef}
           className=" flex justify-center items-center m-autograf"

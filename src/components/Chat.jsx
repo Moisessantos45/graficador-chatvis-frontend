@@ -26,7 +26,7 @@ const Chat = ({ chats }) => {
 
   return (
     <article
-      className="bg-zinc-50 chat shadow-xl shadow-gray-300 rounded-lg hover:scale-100 transition-all"
+      className="bg-zinc-50 chat shadow-xl shadow-gray-300 rounded-lg hover:scale-100 transition-all m-auto sm:mt-0 mt-2"
       ref={chatContainerRef}
     >
       {chats.slice(0, index).map((chat, i) => (
