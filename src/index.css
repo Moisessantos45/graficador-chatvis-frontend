@@ -36,7 +36,7 @@ body {
 
 .chat {
   width: 45%;
-  max-height: 84vh;
+  max-height: 90vh;
   overflow-y: auto;
   scroll-behavior: smooth;
   display: flex;

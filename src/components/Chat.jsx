@@ -1,14 +1,20 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Chat = ({ chats }) => {
   const [index, setIndex] = useState(0);
   const [extraClass, setExtraClass] = useState("");
   const chatContainerRef = useRef(null);
-  // console.log(chats)
+
   useEffect(() => {
     if (chats.length > 0) {
       const timer = setInterval(() => {
-        setIndex((prevIndex) => prevIndex + 1);
+        setIndex((prevIndex) => {
+          const nextIndex = prevIndex + 1;
+          if (nextIndex >= chats.length) {
+            clearInterval(timer);
+          }
+          return nextIndex;
+        });
         setTimeout(() => {
           setExtraClass("visible");
           if (chatContainerRef.current) {
@@ -18,9 +24,7 @@ const Chat = ({ chats }) => {
         }, 10);
       }, 500);
 
-      return () => {
-        clearInterval(timer);
-      };
+      return () => clearInterval(timer);
     }
   }, [chats]);
 

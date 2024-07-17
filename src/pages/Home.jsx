@@ -25,7 +25,6 @@ import procesarTexto, {
   obtener_fecha_hora,
 } from "../utils/ProcesarTexto";
 import Tooltip_mui from "../components/Tooltip";
-// import TooltipDinamicos from "../utils/TooltipsDinamicos";
 
 const mostrarAlerta = (texto) => {
   Swal.fire({
@@ -67,10 +66,7 @@ const Home = () => {
       return palabras.join(" ").replace(/\.txt$/, "");
     });
     setNombre(fileNames);
-    // console.log("Nombres de los archivos seleccionados:", fileNames);
   };
-
-  //procesar texto
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -106,14 +102,8 @@ const Home = () => {
 
   const handleDownloadCsv = (i) => {
     if (csvDataList.length > 0) {
-      // const dataListD3 = csvDataList.flat();
       const dataListD3 = csvDataList[i];
-      // console.log("funcion", fileTexts[i]);
-      // const Participantes = Array.from(
-      //   new Set(fileTexts[i].map((item) => item.nombre))
-      // ).map((nombre) => {
-      //   return fileTexts.find((item) => item.nombre?.trim() === nombre?.trim());
-      // });
+
       let Participantes = fileTexts[i]
         .filter(
           (objeto, index, self) =>
@@ -179,8 +169,7 @@ const Home = () => {
     setWidth(ancho);
     setHeigth(alto);
   };
-  // if (fileTexts.length < 0 || loader) return <Loader />;
-  // console.log(TooltipDinamicos)
+
   return (
     <>
       <main className="flex flex-col gap-1 min-h-[89.5vh]">
@@ -210,6 +199,7 @@ const Home = () => {
                 </label>
                 <input
                   type="file"
+                  accept=".txt"
                   id="file"
                   className="hidden"
                   onChange={handleChange}
@@ -239,7 +229,7 @@ const Home = () => {
               </>
             )}
           </form>
-          {fileTexts.length > 0 ? (
+          {fileTexts.length > 0 && (
             <>
               {mostrarBtn && (
                 <button
@@ -298,8 +288,6 @@ const Home = () => {
                 Restart Chat
               </button>
             </>
-          ) : (
-            ""
           )}
         </div>
         <img
@@ -321,7 +309,7 @@ const Home = () => {
               className="flex flex-wrap justify-center sm:p-0 p-2 mt-3 sm:m-2 w-full flex-col sm:flex-row"
             >
               <div className="flex w-11/12 sm:w-10/12 sm:h-10 h-12 m-auto sm:m-0 items-center font-bold text-xl">
-                {NombreChat ? (
+                {NombreChat && (
                   <>
                     <h1 className="flex">{NombreChat[index]}</h1>
                     <figure className=" flex m-2 gap-2 w-full items-center sm:w-4/12 justify-evenly">
@@ -456,8 +444,6 @@ const Home = () => {
                       ></i>
                     </figure>
                   </>
-                ) : (
-                  " "
                 )}
               </div>
               {(graficaSeleccionada === "d3" ||
@@ -473,7 +459,6 @@ const Home = () => {
               {graficaSeleccionada === "cloud" && fecha.length > 0 && (
                 <WordCloud cadena={fileText} />
               )}
-              {/* {fecha.length > 0 && <GraficaLineBar data={fecha[index]} />} */}
               {graficaSeleccionada == "analisis" && fileText.length > 0 && (
                 <AnalizarChats texto={fileText} />
               )}
@@ -485,7 +470,6 @@ const Home = () => {
               ) : (
                 fileText.length > 0 && <Chat chats={fileText} />
               )}
-              {/* {fileText.length > 0 && <WordCloud cadena={fileText} />} */}
             </div>
           ))}
         </div>
