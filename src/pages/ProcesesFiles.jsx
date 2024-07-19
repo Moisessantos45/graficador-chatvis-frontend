@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useStoreApi from "../Store/useApi";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { showToastNotification } from "../utils/notification";
+import { showToastNotification } from "../utils/showToastNotification";
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
