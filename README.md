@@ -29,7 +29,7 @@ git clone https://github.com/Moisessantos45/graficador-chatvis-frontend.git
 
 * Para trabajar con la nueva version
 ```console
-git checkout nueva-version
+git checkout version-2
 ```
 
 *Una vez clonado el repositorio ejeucta sel siguiente comando para que se instalen las dependencias

@@ -4,10 +4,10 @@ import {
   processFiles,
   calculateInteractions,
   formatDates,
-} from "../utils/procesarTexto";
-import { convertToCSV } from "../utils/createCsv";
-import { showToastNotification } from "../utils/showToastNotification";
-import { processMessages } from "../utils/createWordCloud";
+} from "@/utils/procesarTexto";
+import { convertToCSV } from "@/utils/createCsv";
+import { showToastNotification } from "@/utils/showToastNotification";
+import { processMessages } from "@/utils/createWordCloud";
 
 const api = import.meta.env.VITE_BACKEND_URL_API;
 
