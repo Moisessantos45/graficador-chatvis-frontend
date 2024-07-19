@@ -6,13 +6,13 @@ import bg_icon_miui from "../img/logo_MUI.png";
 const About = () => {
   return (
     <>
-      <section className="bg-white py-12 sm:py-16 lg:py-20">
+      <section className="py-12 sm:py-16 lg:py-20 bg-[#111422] dark">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-lg">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-slate-800 sm:text-4xl xl:text-5xl">
+            <h2 className="text-3xl font-bold text-slate-100 sm:text-4xl xl:text-5xl">
               Frameworks and Libraries Used
             </h2>
-            <p className="mt-4 text-base text-gray-700 sm:mt-8">
+            <p className="mt-4 text-base text-gray-300 sm:mt-8">
               Information on the use
             </p>
           </div>
@@ -40,8 +40,8 @@ const About = () => {
                 <path d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z" />
               </svg>
 
-              <h3 className="mt-12 text-xl font-bold text-slate-800">React</h3>
-              <p className="mt-5 text-base text-gray-700">
+              <h3 className="mt-12 text-xl font-bold text-slate-100">React</h3>
+              <p className="mt-5 text-base text-gray-300">
                 It was used to create the website and render the data.
               </p>
             </div>
@@ -62,10 +62,10 @@ const About = () => {
                 <path d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968zm-4 6.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 1.975 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968z" />
               </svg>
 
-              <h3 className="mt-12 text-xl font-bold text-slate-800">
+              <h3 className="mt-12 text-xl font-bold text-slate-100">
                 Tailwindcss
               </h3>
-              <p className="mt-5 text-base text-gray-700">
+              <p className="mt-5 text-base text-gray-100">
                 It was used to style the components and HTML elements.
               </p>
             </div>
@@ -87,10 +87,10 @@ const About = () => {
                 <path d="M17 9h-3.5a1.5 1.5 0 0 0 0 3h2a1.5 1.5 0 0 1 0 3h-3.5" />
               </svg>
 
-              <h3 className="mt-12 text-xl font-bold text-slate-800">
+              <h3 className="mt-12 text-xl font-bold text-slate-100">
                 Node Js
               </h3>
-              <p className="mt-5 text-base text-gray-700">
+              <p className="mt-5 text-base text-gray-300">
                 It was used to implement an AI, with the purpose of extracting
                 the main idea from the group.
               </p>
@@ -116,8 +116,8 @@ const About = () => {
                 <path d="M17.472 12c1.948 0 3.528 1.79 3.528 4s-1.58 4 -3.528 4h-5.472" />
               </svg>
 
-              <h3 className="mt-12 text-xl font-bold text-slate-800">D3Js</h3>
-              <p className="mt-5 text-base text-gray-700">
+              <h3 className="mt-12 text-xl font-bold text-slate-100">D3Js</h3>
+              <p className="mt-5 text-base text-gray-300">
                 It was used to create the chord chart and display the
                 connections between the members.
               </p>
@@ -128,20 +128,20 @@ const About = () => {
                 alt=""
                 className=" w-14 h-14 m-auto flex"
               />
-              <h3 className="mt-12 text-xl font-bold text-slate-800">
+              <h3 className="mt-12 text-xl font-bold text-slate-100">
                 Chart Js
               </h3>
-              <p className="mt-5 text-base text-gray-700">
+              <p className="mt-5 text-base text-gray-300">
                 It was used to plot the data, bar charts for day, date, and
                 time.
               </p>
             </div>
             <div className="md:border-b-2 border-sky-500 md:shadow-lg m-2 md:p-8 lg:p-12">
               <img src={bg_victory} alt="" className=" flex m-auto w-14 h-14" />
-              <h3 className="mt-12 text-xl font-bold text-slate-800">
+              <h3 className="mt-12 text-xl font-bold text-slate-300">
                 Victory Native
               </h3>
-              <p className="mt-5 text-base text-gray-700">
+              <p className="mt-5 text-base text-gray-300">
                 It was used to plot the data on whether there was code in the
                 messages.
               </p>
@@ -152,10 +152,10 @@ const About = () => {
                 alt=""
                 className=" flex w-14 h-14 m-auto"
               />
-              <h3 className="mt-12 text-xl font-bold text-slate-800">
+              <h3 className="mt-12 text-xl font-bold text-slate-100">
                 Mui/Material
               </h3>
-              <p className="mt-5 text-base text-gray-700">
+              <p className="mt-5 text-base text-gray-200">
                 It was used to create the tooltip and some designs for React
                 components.
               </p>
@@ -163,13 +163,13 @@ const About = () => {
             <div className="md:border-b-2 border-sky-500 md:shadow-lg m-2 md:p-8 lg:p-12">
               <img
                 src={bg_icon_fontsome}
-                alt=""
+                alt="imagen de fontawesome"
                 className=" flex w-14 h-14 m-auto"
               />
-              <h3 className="mt-12 text-xl font-bold text-slate-800">
+              <h3 className="mt-12 text-xl font-bold text-slate-100">
                 Fontawesome
               </h3>
-              <p className="mt-5 text-base text-gray-700">
+              <p className="mt-5 text-base text-gray-300">
                 It was used to get the icons for the elements and buttons on the
                 website.
               </p>
@@ -177,12 +177,13 @@ const About = () => {
           </div>
         </div>
       </section>
-      <section className="mx-auto my-10 flex max-w-xl flex-col rounded-3xl border-blue-300 px-4 py-10 text-gray-700 sm:border-8 sm:px-10 lg:max-w-screen-lg lg:flex-row">
+
+      <section className="mx-auto my-10 flex max-w-xl flex-col rounded-3xl border-blue-300 px-4 py-10 text-gray-700 sm:border-8 sm:px-10 lg:max-w-screen-lg lg:flex-row bg-[#111422] dark">
         <div className="mr-2">
-          <h2 className="mb-4 text-4xl font-medium">
+          <h2 className="mb-4 text-4xl font-medium  text-gray-300">
             Development <span className="text-blue-600">Information</span>
           </h2>
-          <p className="mb-6">Project developers data</p>
+          <p className="mb-6  text-gray-300">Project developers data</p>
           <div className="mb-4 space-y-4">
             <div className="flex space-x-2">
               <span className="text-blue-400">
@@ -201,7 +202,9 @@ const About = () => {
                   />
                 </svg>
               </span>
-              <span className="font-medium">Moises Santos Hernandez</span>
+              <span className="font-medium text-slate-100">
+                Moises Santos Hernandez
+              </span>
             </div>
             <div className="flex space-x-2">
               <span className="text-blue-400">
@@ -220,7 +223,7 @@ const About = () => {
                   />
                 </svg>
               </span>
-              <span className="font-medium">
+              <span className="font-medium text-slate-100">
                 Student: Faculty of Intelligent Systems Engineering
               </span>
             </div>
@@ -241,7 +244,9 @@ const About = () => {
                   />
                 </svg>
               </span>
-              <span className="font-medium">Subject: Software Engineering</span>
+              <span className="font-medium text-slate-100">
+                Subject: Software Engineering
+              </span>
             </div>
             <div className="flex space-x-2">
               <span className="text-blue-400">
@@ -260,7 +265,7 @@ const About = () => {
                   />
                 </svg>
               </span>
-              <span className="font-medium">
+              <span className="font-medium text-slate-100">
                 University: Autonomous University Of San Luis Potosí
               </span>
             </div>

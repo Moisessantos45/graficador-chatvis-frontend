@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
+import useStoreApi from "@/Store/useApi";
 
-const Graficas = ({ data }) => {
+const GraficaViewCuerdas = () => {
+  const { graphData } = useStoreApi();
   const svgRef = useRef(null);
   const [realTimeData, setRealTimeData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,7 +38,7 @@ const Graficas = ({ data }) => {
       .ribbonArrow()
       .radius(innerRadius - 1)
       .padAngle(1 / innerRadius);
-    const colors = d3.schemeCategory10;
+    const colors = d3.scaleOrdinal(d3.schemeCategory10);
 
     const svg = d3
       .select(svgRef.current)
@@ -58,8 +60,9 @@ const Graficas = ({ data }) => {
 
     group
       .append("path")
-      .attr("fill", (d) => colors[d.index])
-      .attr("d", arc);
+      .attr("fill", (d) => colors(d.index))
+      .attr("d", arc)
+      .attr("stroke", "#111422");
 
     const labelRadius = outerRadius + 15;
 
@@ -70,25 +73,26 @@ const Graficas = ({ data }) => {
       .attr(
         "transform",
         (d) => `
-        rotate(${(d.angle * 180) / Math.PI - 90})
-        translate(${labelRadius})
-        ${d.angle > Math.PI ? "rotate(180)" : ""}
-      `
+          rotate(${(d.angle * 180) / Math.PI - 90})
+          translate(${labelRadius})
+          ${d.angle > Math.PI ? "rotate(180)" : ""}
+        `
       )
       .attr("text-anchor", (d) => (d.angle > Math.PI ? "end" : null))
       .text((d) => names[d.index])
-      .style("font-size", "10px");
+      .style("font-size", "10px")
+      .style("fill", "#E0E0E0");
 
     group.append("title").text(
       (d) => `${names[d.index]}
-    ${d3.sum(
-      chords,
-      (c) => (c.source.index === d.index) * c.source.value
-    )} outgoing →
-    ${d3.sum(
-      chords,
-      (c) => (c.target.index === d.index) * c.source.value
-    )} incoming ←`
+      ${d3.sum(
+        chords,
+        (c) => (c.source.index === d.index) * c.source.value
+      )} outgoing →
+      ${d3.sum(
+        chords,
+        (c) => (c.target.index === d.index) * c.source.value
+      )} incoming ←`
     );
 
     mainGroup
@@ -98,7 +102,8 @@ const Graficas = ({ data }) => {
       .data(chords)
       .join("path")
       .attr("d", ribbon)
-      .attr("fill", (d) => colors[d.target.index])
+      .attr("fill", (d) => colors(d.target.index))
+      .attr("stroke", "#111422")
       .append("title")
       .text(
         (d) =>
@@ -109,21 +114,21 @@ const Graficas = ({ data }) => {
   }, [realTimeData]);
 
   useEffect(() => {
-    if (currentIndex < data.length) {
+    if (currentIndex < graphData.length) {
       const timeoutId = setTimeout(() => {
-        setRealTimeData((prevData) => [...prevData, data[currentIndex]]);
+        setRealTimeData((prevData) => [...prevData, graphData[currentIndex]]);
         setCurrentIndex((prevIndex) => prevIndex + 1);
       }, 500);
 
       return () => clearTimeout(timeoutId);
     }
-  }, [data, currentIndex]);
+  }, [graphData, currentIndex]);
 
   return (
-    <div className="sm:max-w-2xl mx-auto w-12/12 bg-zinc-50 p-4 shadow-xl shadow-gray-300 rounded-lg hover:scale-100 transition-all h-[90vh]">
+    <div className="sm:max-w-2xl mx-auto w-11/12 p-4 shadow-sm shadow-gray-300 rounded-lg hover:scale-100 transition-all sm:h-[95vh] md:mt-5 mt-14">
       <svg ref={svgRef} className="w-full h-full"></svg>
     </div>
   );
 };
 
-export default Graficas;
+export default GraficaViewCuerdas;

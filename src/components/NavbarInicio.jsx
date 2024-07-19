@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 const NavbarInicio = () => {
   return (
     <>
-      <header className=" relative z-20 grid w-full h-12 bg-indigo-600 text-black grid-cols-3 grid-rows-1 capitalize">
+      <header className=" relative z-20 grid w-full h-12 text-black grid-cols-3 grid-rows-1 capitalize border-b border-solid border-b-[#232b48] bg-[#111422] dark">
         <Link
           to={"/"}
           className="col-start-1 col-end-3 self-center flex justify-start ml-7 sm:ml-12"

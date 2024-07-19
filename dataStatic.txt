@@ -1,0 +1,88 @@
+// datos estaticos para la grafica de cuerdas
+const staticData = [
+  { source: "A", target: "B", value: 10 },
+  { source: "A", target: "C", value: 20 },
+  { source: "A", target: "D", value: 30 },
+  { source: "B", target: "C", value: 40 },
+  { source: "B", target: "D", value: 50 },
+  { source: "C", target: "D", value: 60 },
+  { source: "C", target: "E", value: 70 },
+  { source: "D", target: "E", value: 80 },
+  { source: "E", target: "A", value: 90 },
+  { source: "E", target: "B", value: 100 },
+];
+
+// datos estaticos para la grafica que muestra la horas de interaccion
+const datosEstaticosTime = [
+  { hora: "8:00 AM" },
+  { hora: "9:00 AM" },
+  { hora: "10:00 AM" },
+  { hora: "11:00 AM" },
+  { hora: "12:00 PM" },
+  { hora: "1:00 PM" },
+  { hora: "2:00 PM" },
+  { hora: "3:00 PM" },
+  { hora: "4:00 PM" },
+  { hora: "5:00 PM" },
+  { hora: "6:00 PM" },
+  { hora: "7:00 PM" },
+];
+
+// datos estaticos para la grafica que muestra los dias con mas interaccion
+const datosEstaticos = [
+  { fecha: "2024-07-15" },
+  { fecha: "2024-07-16" },
+  { fecha: "2024-07-16" },
+  { fecha: "2024-07-17" },
+  { fecha: "2024-07-17" },
+  { fecha: "2024-07-17" },
+  { fecha: "2024-07-18" },
+  { fecha: "2024-07-18" },
+  { fecha: "2024-07-18" },
+  { fecha: "2024-07-18" },
+];
+
+// datos estaticos para la grafica de codigo y mensjaes
+const datosObjeto = [
+  { fecha: "2024-01-01", texto: "let x = 10;" },
+  { fecha: "2024-01-02", texto: "function test() { return x; }" },
+  { fecha: "2024-01-03", texto: "const y = x + 20;" },
+  { fecha: "2024-01-04", texto: "int z = 30;" },
+  { fecha: "2024-01-05", texto: "public class Test { }" },
+  { fecha: "2024-01-06", texto: 'import { React } from "react";' },
+  { fecha: "2024-01-07", texto: "while (x < y) { x++; }" },
+];
+
+const datosDias = [
+  { texto: "let x = 10;" },
+  { texto: "function test() { return x; }" },
+  { texto: "const y = x + 20;" },
+  { texto: "int z = 30;" },
+  { texto: "public class Test { }" },
+  { texto: 'import { React } from "react";' },
+  { texto: "while (x < y) { x++; }" },
+];
+
+// datos estaticos de wordcloud
+const staticDataw = [
+  { texto: "example" },
+  { texto: "d3" },
+  { texto: "visualization" },
+  { texto: "javascript" },
+  { texto: "wordcloud" },
+  { texto: "react" },
+  { texto: "programming" },
+  { texto: "development" },
+  { texto: "data" },
+  { texto: "science" },
+  { texto: "analysis" },
+  { texto: "chart" },
+  { texto: "graph" },
+  { texto: "design" },
+  { texto: "interface" },
+  { texto: "user experience" },
+  { texto: "UI" },
+  { texto: "UX" },
+  { texto: "coding" },
+  { texto: "software" },
+];
