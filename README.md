@@ -24,15 +24,19 @@ Web para el procesamiento de los chats de whatsApp. complementado con funcionali
 - Para clonar el repositorio ejecuta
 
 ```console
-git clone https://github.com/Moisessantos45/jwt-express-middleware.git
+git clone https://github.com/Moisessantos45/graficador-chatvis-frontend.git
 ```
 
--Una vez clonado el repositorio ejeucta sel siguiente comando para que se instalen las dependencias
+* Para trabajar con la nueva version
+```console
+git checkout nueva-version
+```
+
+*Una vez clonado el repositorio ejeucta sel siguiente comando para que se instalen las dependencias
 
 ```console
 npm install
 ```
-
 # Configuracion
 
 * Una vez realizada la instalacion de dependencias

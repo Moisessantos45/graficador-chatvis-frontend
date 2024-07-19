@@ -4,7 +4,7 @@ import {
   processFiles,
   calculateInteractions,
   formatDates,
-} from "../utils/ProcesarTexto";
+} from "../utils/procesarTexto";
 import { convertToCSV } from "../utils/createCsv";
 import { showToastNotification } from "../utils/notification";
 import { processMessages } from "../utils/createWordCloud";
