@@ -32,7 +32,7 @@ git clone https://github.com/Moisessantos45/graficador-chatvis-frontend.git
 git checkout version-2
 ```
 
-*Una vez clonado el repositorio ejeucta sel siguiente comando para que se instalen las dependencias
+* Una vez clonado el repositorio ejeucta sel siguiente comando para que se instalen las dependencias
 
 ```console
 npm install

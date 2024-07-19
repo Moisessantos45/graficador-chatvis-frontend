@@ -4,7 +4,7 @@ import {
   processFiles,
   calculateInteractions,
   formatDates,
-} from "@/utils/procesarTexto";
+} from "../utils/textProcessing";
 import { convertToCSV } from "@/utils/createCsv";
 import { showToastNotification } from "@/utils/showToastNotification";
 import { processMessages } from "@/utils/createWordCloud";
@@ -99,7 +99,7 @@ const useStoreApi = create((set, get) => ({
       showToastNotification("Option not found", false);
     }
   },
-  createWordCloud: async (id,option) => {
+  createWordCloud: async (id, option) => {
     const { selectedFileContent } = get();
     const path = selectedFileContent.path;
     const data = selectedFileContent.data;
@@ -121,7 +121,7 @@ const useStoreApi = create((set, get) => ({
       showToastNotification("Error creating word cloud", false);
     }
   },
-  downloadCsv: async (id,opcion) => {
+  downloadCsv: async (id, opcion) => {
     try {
       const { selectedFileContent } = get();
       const path = selectedFileContent.path;
