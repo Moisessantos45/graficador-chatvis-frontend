@@ -1,96 +1,83 @@
-const procesarTexto = (text) => {
-  const chatCompleto = [];
-  const parts = text.split(/\d{1,2}\/\d{1,2}\/\d{4}(?:,)?/);
+import { codeKeywords } from "./dataStatic";
 
-  if (!/\d{1,2}:\d{2}\s*[ap]\.?\s*m\./.test(parts[10].trim()) || !parts) {
+function separarCadena(cadena) {
+  const patronFechaHora =
+    /(\d{1,2}\/\d{1,2}\/\d{4})\s*(?:,)?\s*(\d{1,2}:\d{2}(?:\s*[ap]\.?\s*m\.?)?)/;
+  const match = cadena.match(patronFechaHora);
+
+  if (!match) return null;
+
+  let [, fecha, hora] = match;
+  let resto = cadena.slice(match[0].length).trim();
+
+  let nombre, mensaje;
+  if (resto.includes(":")) {
+    [nombre, mensaje] = resto.split(":", 2);
+  } else if (resto.includes("-")) {
+    [nombre, mensaje] = resto.split("-", 2);
+  } else {
     return null;
   }
 
-  parts.forEach((text) => {
-    if (text && text.trim() !== "" && !text.includes("<Multimedia omitido>")) {
-      const [fechaHora, resto] = text.split(" - ");
-      let fecha, hora;
-      if (fechaHora.includes(",")) {
-        [fecha, hora] = fechaHora.split(",");
-      } else {
-        fecha = fechaHora.split(" ")[0];
-        // hora = fechaHora.split(" ")[1] + " " + fechaHora.split(" ")[2];
-        hora = fechaHora.split(" ")[1];
+  nombre = nombre.trim();
+  mensaje = mensaje.trim();
+
+  // Estandarizar el formato de la hora
+  hora = hora.toLowerCase().replace(/\./g, "").replace(/\s/g, "");
+  if (hora.includes("am")) {
+    hora = hora.replace("am", "a.m.");
+  } else if (hora.includes("pm")) {
+    hora = hora.replace("pm", "p.m.");
+  }
+
+  return { fecha, hora, nombre, mensaje };
+}
+
+// Función para procesar el contenido de un archivo
+function procesarContenido(contenido) {
+  // Eliminar saltos de línea múltiples
+  contenido = contenido.replace(/\n{2,}/g, "\n");
+
+  const mensajes = [];
+  let mensajeActual = "";
+
+  contenido.split("\n").forEach((linea) => {
+    if (/^\d{1,2}\/\d{1,2}\/\d{4}/.test(linea)) {
+      if (mensajeActual) {
+        mensajes.push(mensajeActual.trim());
       }
-      const [nombre, texto] = resto.split(":");
-      if (texto) {
-        const palabras = texto.trim().split(/\s+/);
-        if (palabras.length > 3) {
-          chatCompleto.push({
-            fecha,
-            hora,
-            nombre,
-            texto,
-          });
-        }
-      }
+      mensajeActual = linea;
+    } else {
+      mensajeActual += " " + linea.trim();
     }
   });
 
-  return chatCompleto;
+  if (mensajeActual) {
+    mensajes.push(mensajeActual.trim());
+  }
+
+  return mensajes.map(separarCadena).filter((m) => m !== null);
+}
+
+const processFiles = async (files) => {
+  const resultadosProcesados = [];
+  for (const archivo of files) {
+    const contenido = await archivo.text();
+    const mensajesProcesados = procesarContenido(contenido);
+    resultadosProcesados.push({
+      path: archivo.name
+        .replace("Chat de WhatsApp con ", "")
+        .replace(/\.txt$/, ""),
+      data: mensajesProcesados,
+    });
+  }
+  return resultadosProcesados;
 };
 
-export default procesarTexto;
-
-const obtener_fecha_hora = (datos) => {
-  const chatTiempo = [];
-  const lineas = datos.split("\n");
-
-  lineas.forEach((linea) => {
-    const partes = linea.split(" - ");
-    if (partes.length === 2) {
-      const [fechaHora, mensaje] = partes;
-      let fecha, hora;
-      if (fechaHora.includes(",")) {
-        [fecha, hora] = fechaHora.split(", ");
-      } else {
-        fecha = fechaHora.split(" ")[0];
-        hora = fechaHora.split(" ")[1] + " " + fechaHora.split(" ")[2];
-      }
-      chatTiempo.push({ fecha, hora });
-    }
-  });
-
-  return chatTiempo;
-};
-
-const separarCadena = (cadena) => {
-  // console.log(cadena)
-  const regex1 =
-    /^(\d{1,2}\/\d{1,2}\/\d{4}) (\d{1,2}:\d{2} [ap]\.?\s?m\.) - ([^:]+): (.+)$/;
-  const regex2 =
-    /^(\d{1,2}\/\d{1,2}\/\d{4},) (\d{1,2}:\d{2} [ap]\.?\s?m\.) - ([^:]+): (.+)$/;
-  const chatCompleto = [];
-  cadena.split(/\d{1,2}\/\d{1,2}\/\d{4}/).forEach((text) => {
-    // console.log(text);
-    if (text && text.trim() !== "") {
-      let match = text.match(regex1);
-      if (!match) {
-        match = text.match(regex2);
-      }
-      if (match) {
-        chatCompleto.push({
-          fecha: match[1],
-          hora: match[2],
-          nombre: match[3],
-          texto: match[4],
-        });
-      }
-    }
-  });
-
-  return chatCompleto;
-};
-
-const simplificarObjeto = (chatCompleto) => {
+const calculateInteractions = (chatCompleto) => {
   let interacciones = 0;
   return chatCompleto.slice(3).map((mensaje, i) => {
-    if (mensaje.texto) {
+    if (mensaje.mensaje) {
       interacciones++;
     }
     return {
@@ -101,65 +88,19 @@ const simplificarObjeto = (chatCompleto) => {
   });
 };
 
-const palabrasYCaracteres = [
-  "while",
-  "for",
-  "let",
-  "int",
-  "const",
-  "function",
-  "def",
-  "(",
-  ")",
-  "{",
-  "}",
-  "<",
-  ">",
-  "+",
-  "-",
-  "/",
-  "[",
-  "]",
-  "if",
-  "else",
-  "switch",
-  "case",
-  "return",
-  "class",
-  "public",
-  "private",
-  "protected",
-  "static",
-  "void",
-  "try",
-  "catch",
-  "throw",
-  "import",
-  "from",
-  "export",
-  "module",
-  "==",
-  "!=",
-  "===",
-  "!==",
-  "<=",
-  ">=",
-  "//",
-  "/*",
-  "* /",
-  "#",
-  '" "',
-  "float",
-  "*",
-  "scanf",
-  "%f",
-  "&",
-];
-
-const busqueda = (cadena) => {
-  // console.log(cadena)
-  if (cadena == undefined) return false;
-  return palabrasYCaracteres.filter((item) => cadena.includes(item)).length > 4;
+const formatDates = (data) => {
+  return data.map(({ fecha, mensaje }) => {
+    const [day, month, year] = fecha.split("/");
+    return {
+      fecha: `${year}-${month}-${day}`,
+      texto: mensaje,
+    };
+  });
 };
 
-export { separarCadena, obtener_fecha_hora, simplificarObjeto, busqueda };
+const busqueda = (cadena) => {
+  if (cadena == undefined) return false;
+  return codeKeywords.filter((item) => cadena.includes(item)).length > 4;
+};
+
+export { processFiles, calculateInteractions, formatDates, busqueda };

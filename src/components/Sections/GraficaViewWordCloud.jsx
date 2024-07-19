@@ -1,25 +1,18 @@
 import { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import cloud from "d3-cloud";
+import useStoreApi from "../../Store/useApi";
 
-const WordCloud = ({ cadena }) => {
+const GraficaViewWordCloud = () => {
+  const { graphData } = useStoreApi();
   const svgRef = useRef();
-
-  const procesarPalabras = (cadenaPalabras) => {
-    const oracion = cadenaPalabras.map((text) => text.texto).join(" ");
-    const textoProcesado = oracion
-      .replace(/\n/g, " ")
-      .split(/\s*\.\.\.\s*/)
-      .join(" ");
-    return textoProcesado;
-  };
 
   const crearLista = (text) => {
     const lista = [];
     const palabrasLimite = 80;
     let palabrasEncontradas = 0;
 
-    text.split(" ").forEach((item) => {
+    text.forEach((item) => {
       if (
         palabrasEncontradas < palabrasLimite &&
         item.length > 5 &&
@@ -77,13 +70,12 @@ const WordCloud = ({ cadena }) => {
   };
 
   useEffect(() => {
-    const textoProcesado = procesarPalabras(cadena);
-    const words = crearLista(textoProcesado);
+    const words = crearLista(graphData);
     graficarWords(words);
-  }, [cadena]);
+  }, [graphData]);
 
   return (
-    <article className="scroll w-12/12 sm:w-6/12 flex-wrap flex items-center justify-center m-auto overflow-y-auto shadow-xl rounded-lg shadow-gray-300 transition-all heigth">
+    <article className="w-12/12 sm:w-7/12 flex-wrap flex items-center justify-center m-auto overflow-y-auto shadow-sm rounded-2xl shadow-gray-300 transition-all heigth md:mt-5 mt-14">
       <svg
         ref={svgRef}
         className="flex w-11/12 m-auto h-full justify-center items-center p-1"
@@ -92,4 +84,4 @@ const WordCloud = ({ cadena }) => {
   );
 };
 
-export default WordCloud;
+export default GraficaViewWordCloud;
