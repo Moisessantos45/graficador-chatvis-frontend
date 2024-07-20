@@ -76,7 +76,7 @@ const Sidebar = () => {
             onClick={() => handleOptionService("home")}
             className={`${
               isSelectOption === "home" && "bg-slate-800"
-            } cursor-pointer rounded p-2`}
+            } cursor-pointer rounded p-2 hover:bg-slate-800`}
           >
             Home
           </li>
@@ -84,7 +84,7 @@ const Sidebar = () => {
             onClick={() => handleOptionService("chat")}
             className={`${
               ["chat", ""].includes(isSelectOption) && "bg-slate-800"
-            } cursor-pointer rounded p-2`}
+            } cursor-pointer rounded p-2 hover:bg-slate-800`}
           >
             Chat
           </li>
@@ -92,7 +92,7 @@ const Sidebar = () => {
             onClick={() => handleOptionService("stringsChart")}
             className={`${
               isSelectOption === "stringsChart" && "bg-slate-800"
-            } cursor-pointer rounded p-2`}
+            } cursor-pointer rounded p-2 hover:bg-slate-800`}
           >
             Grafica de cuerdas
           </li>
@@ -100,14 +100,14 @@ const Sidebar = () => {
             onClick={() => handleOptionService("timeChart")}
             className={`${
               isSelectOption === "timeChart" && "bg-slate-800"
-            } cursor-pointer rounded p-2`}
+            } cursor-pointer rounded p-2 hover:bg-slate-800`}
           >
             Grafica de tiempo
           </li>
           <li
             className={`${
               isSelectOption === "dailyChart" && "bg-slate-800"
-            } rounded p-2 cursor-pointer`}
+            } rounded p-2 cursor-pointer hover:bg-slate-800`}
             onClick={() => handleOptionService("dailyChart")}
           >
             Grafica por dia
@@ -116,26 +116,26 @@ const Sidebar = () => {
             onClick={() => handleOptionService("codeMessagesChart")}
             className={`${
               isSelectOption === "codeMessagesChart" && "bg-slate-800"
-            } cursor-pointer rounded p-2`}
+            } cursor-pointer rounded p-2 hover:bg-slate-800`}
           >
             Grafica de codigo y mensajes
           </li>
           <li
             onClick={() => {
               handleOptionService("wordCloud");
-              createWordCloud(id,serviceApi);
+              createWordCloud(id, serviceApi);
             }}
             className={`${
               isSelectOption === "wordCloud" && "bg-slate-800"
-            } cursor-pointer rounded p-2`}
+            } cursor-pointer rounded p-2 hover:bg-slate-800`}
           >
             Grafica de nube de palabras
           </li>
           <li
-            onClick={() => downloadCsv(id,serviceApi)}
-            className={`${
-              isSelectOption === "wordCloud" && "bg-slate-800"
-            } cursor-pointer rounded p-2`}
+            onClick={() => {
+              downloadCsv(id, serviceApi);
+            }}
+            className="cursor-pointer rounded p-2 hover:bg-slate-800"
           >
             Descargar CSV
           </li>
@@ -144,11 +144,7 @@ const Sidebar = () => {
 
       <div className="space-y-0">
         <h2 className="text-lg font-semibold mb-4 mt-5">Message analysis</h2>
-        <div
-          className={`space-y-2 h-auto ${
-            service !== "home" ? "lg:min-h-72" : "lg:min-h-[450px]"
-          }  overflow-y-auto width_line`}
-        >
+        <div className="space-y-2 h-auto md:h-72  overflow-y-auto width_line">
           {data.length > 0 &&
             data.map((item, i) => (
               <button

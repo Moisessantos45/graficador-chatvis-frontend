@@ -1,4 +1,6 @@
 const Footer = () => {
+  const date = new Date();
+  const year = date.getFullYear();
   return (
     <footer className="flex justify-center bg-[#111422] dark w-full min-h-[50px] flex-col items-center mt-5 border-t border-solid border-t-[#232b48] p-3">
       <div className="flex flex-wrap justify-center gap-4">
@@ -94,7 +96,7 @@ const Footer = () => {
         </a>
       </div>
       <p className="text-[#919dca] text-base font-normal leading-normal mt-5">
-        @2024 ChatVis
+        @{year} ChatVis
       </p>
     </footer>
   );

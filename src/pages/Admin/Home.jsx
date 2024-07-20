@@ -1,4 +1,4 @@
-import useStoreApi from "../../Store/useApi";
+import useStoreApi from "@/Store/useApi";
 import { v4 as uuidv4 } from "uuid";
 import WordCloudItem from "@/components/UI/WordCloudItem";
 import { words } from "@/utils/dataStatic";
@@ -7,7 +7,7 @@ import DashboardItem from "@/components/UI/DashboardItem";
 const Home = () => {
   const { data } = useStoreApi();
   return (
-    <div className="min-h-screen bg-transparent text-white p-8 w-full sm:mt-7 lg:mt-5 mt-10">
+    <div className="min-h-screen bg-transparent text-white p-8 w-full sm:mt-7 md:mt-2 lg:mt-5 mt-10">
       <div className="w-11/12 mx-auto">
         <h1 className="text-3xl font-bold mb-8">
           WhatsApp chat analysis dashboard

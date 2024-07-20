@@ -45,20 +45,20 @@ const Home = () => {
             </div>
             <div className="bg-[#111422] text-white">
               <h3 className="text-xl font-bold leading-tight tracking-wide px-6 py-4 border-b border-gray-700">
-                Opciones de procesamiento de información en tu sitio web
+                Information Processing Options on Your Website
               </h3>
               <div className="flex flex-col sm:flex-row justify-start items-stretch p-6 gap-4">
                 <button
                   className="flex-1 min-w-[150px] cursor-pointer items-center justify-center overflow-hidden rounded-xl py-3 px-6 bg-[#335cf0] hover:bg-[#4b6ef2] transition-colors duration-200 text-white text-sm font-semibold leading-normal tracking-wide"
                   onClick={() => handleOptionService("browser")}
                 >
-                  <span className="truncate">Procesar en el navegador</span>
+                  <span className="truncate">Process in the Browser</span>
                 </button>
                 <button
                   className="flex-1 min-w-[150px] cursor-pointer items-center justify-center overflow-hidden rounded-xl py-3 px-6 bg-[#232b48] hover:bg-[#2d3760] transition-colors duration-200 text-white text-sm font-semibold leading-normal tracking-wide"
                   onClick={() => handleOptionService("api")}
                 >
-                  <span className="truncate">Procesar mediante API</span>
+                  <span className="truncate">Process via API</span>
                 </button>
               </div>
             </div>

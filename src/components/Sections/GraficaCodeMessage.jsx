@@ -60,7 +60,7 @@ const GraficaCodeMessage = () => {
   }, [graphData]);
 
   return (
-    <div className="flex-1 w-11/12 flex flex-col gap-2 rounded-xl overflow-x-auto hide-scrollbar-x p-6 md:mt-5 mt-14 mx-auto">
+    <div className="flex-1 w-11/12 flex flex-col gap-2 rounded-xl overflow-y-auto hide-scrollbar-x p-6 md:mt-5 mt-14 mx-auto">
       <p className="text-white text-base font-medium leading-normal">
         Message Volume Over Time
       </p>
@@ -80,7 +80,7 @@ const GraficaCodeMessage = () => {
           <p className="text-white">Mensajes de código</p>
         </div>
       </div>
-      <div className="grid min-h-[180px] lg:grid-cols-12 md:grid-cols-8 grid-cols-6 gap-3 items-end justify-items-center px-5">
+      <div className="grid max-h-[180px] lg:grid-cols-12 md:grid-cols-8 grid-cols-6 gap-3 items-end justify-items-center px-5 width_line">
         {dailyData.map((data, index) => (
           <div key={index} className="w-full text-center">
             <div className="relative w-full h-40 md:max-h-32 max-h-20 flex flex-col justify-end">

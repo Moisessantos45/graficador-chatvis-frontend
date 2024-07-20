@@ -45,7 +45,7 @@ npm install
     * La segunda es usar una API que esta construida en pyhton.
        * Algunas benefecios es que se crean json con la informacion de los chat manteniendo un    mejor control de la informacion ademas de poder mantener la persistencia de datos a diferencia del uso del navegador que se guarda en la memoria Ram.
        
-        Para mas informacion sobre la [documentacion sobre la API](http://expressjs.com/en/starter/installing.html).
+        Para mas informacion sobre la [documentacion sobre la API](https://github.com/Moisessantos45/api-v1-chatvis.git).
 * crea un arhivo .env en la raiz del proyecto.
 * Dentro de ese archivo crea una variable con siguiente nombre.
 

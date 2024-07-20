@@ -46,10 +46,10 @@ const ProcesesFiles = () => {
     <>
       <section className="w-full max-w-screen-lg mx-auto p-4 sm:w-9/12">
         <div
-          className="relative flex size-full flex-col bg-[#111422] dark group/design-root overflow-x-hidden"
+          className="relative flex size-full flex-col bg-[#111422] dark group/design-root width_line"
           style={{ fontFamily: 'Inter, "Noto Sans", sans-serif' }}
         >
-          <div className="layout-container flex sm:h-[80vh] grow flex-col">
+          <div className="layout-container flex sm:h-[80vh] grow flex-col width_line">
             <div className="flex flex-1 justify-center py-5">
               <form
                 className="layout-content-container flex flex-col w-full max-w-md p-6"
