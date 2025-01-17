@@ -1,24 +1,29 @@
 import { stemmer } from "stemmer";
-import { removeStopwords, eng, swe } from "stopword";
+import { eng, swe } from "stopword";
+
+const WORD_LIMIT = 130;
+const MIN_WORD_LENGTH = 3;
+
+const customStopWords = ["interesting", "really"];
+const combinedStopWords = new Set([...eng, ...swe, ...customStopWords]);
 
 const processMessages = (messages) => {
-  const customStopWords = ["interesting", "really"];
-  const combinedStopWords = [...eng, ...swe, ...customStopWords];
+  if (!Array.isArray(messages) || !messages.length) {
+    return [];
+  }
 
-  let uniqueWords = new Set();
-
-  messages.forEach((message) => {
-    const tokens = message.toLowerCase().split(/\s+/);
-    const filteredTokens = removeStopwords(tokens, combinedStopWords)
-      .filter((token) => token.length > 3)
-      .map((token) => stemmer(token));
-    filteredTokens.forEach((token) => uniqueWords.add(token));
-  });
-
-  // Limitar a 130 palabras únicas
-  const limitedWords = Array.from(uniqueWords).slice(0, 130);
-
-  return limitedWords;
+  return messages
+    .flatMap(message => 
+      message.toLowerCase()
+        .split(/\s+/)
+        .filter(token => 
+          token.length > MIN_WORD_LENGTH && 
+          !combinedStopWords.has(token)
+        )
+        .map(stemmer)
+    )
+    .filter((value, index, self) => self.indexOf(value) === index)
+    .slice(0, WORD_LIMIT);
 };
 
 export { processMessages };
