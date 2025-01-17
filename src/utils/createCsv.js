@@ -1,24 +1,52 @@
 const convertToCSV = (array) => {
-  const header = Object.keys(array[0]).join(",") + "\n";
-  const rows = array.map((obj) => Object.values(obj).join(",")).join("\n");
-  return header + rows;
+  if (!Array.isArray(array) || !array.length) {
+    throw new Error('Input must be a non-empty array');
+  }
+
+  // Use map once instead of multiple Object operations
+  const headers = Object.keys(array[0]);
+  const csvRows = [
+    headers.join(','),
+    ...array.map(obj => headers.map(header => 
+      // Handle special characters and commas in values
+      typeof obj[header] === 'string' && obj[header].includes(',') 
+        ? `"${obj[header]}"` 
+        : obj[header]
+    ).join(','))
+  ];
+
+  return csvRows.join('\n');
 };
 
-const downloadCSV = (data) => {
-  const csv = convertToCSV(data);
-  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
+const downloadCSV = (data, filename = 'datos.csv') => {
+  try {
+    const csv = convertToCSV(data);
+    const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csv], { 
+      type: 'text/csv;charset=utf-8'
+    });
+    
+    // Use URL.createObjectURL more efficiently
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    
+    Object.assign(link, {
+      href: url,
+      download: filename,
+      style: 'display: none'
+    });
 
-  const link = document.createElement("a");
-  link.setAttribute("href", url);
-  link.setAttribute("download", "datos.csv");
-  link.style.visibility = "hidden";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+    document.body.appendChild(link);
+    link.click();
+    
+    // Cleanup
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error('Error downloading CSV:', error);
+  }
 };
 
 export {
-    convertToCSV,
-    downloadCSV,
-}
+  convertToCSV,
+  downloadCSV,
+};
